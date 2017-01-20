@@ -3,14 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		.header {
+			color: #333;
+			font-size: 22px;
+		}
+	</style>
 </head>
 <body>
 	<div id="root">
-		<ul>
-			<li v-for="name in names" v-text="name"></li>
-		</ul>
-		<input v-model="newName" type="text">
-		<button @click="addName">Send</button>
+		<button :title="title">Hover over me</button>
+	</div>
+	<div id="second-root">
+		<h1 :class="className">Hola</h1>
 	</div>
 	<!--  -->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -18,25 +23,14 @@
 		var app = new Vue({
 			el: '#root',
 			data: {
-				newName: '',
-				names: ['Raul', 'Stephanie', 'Daniela', 'Valeria']
-			},
-			methods: {
-				addName() {
-					this.names.push(this.newName)
-					this.newName = ''
-				}
+				title: 'New title'
 			}
-			// mounted() {
-			// 	document.querySelector('#button').addEventListener('click', function(){
-
-			// 		let name = document.querySelector('#input')
-
-			// 		app.names.push(name.value)
-
-			// 		name.value = ''
-			// 	})
-			// }
+		})
+		var style = new Vue({
+			el: '#second-root',
+			data: {
+				className: 'header'
+			}
 		})
 	</script>
 </body>
